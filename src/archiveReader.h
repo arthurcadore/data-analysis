@@ -17,7 +17,7 @@ using std::unordered_map;
 using std::cout;
 using std::endl;
 
-void importer(unordered_map<string, string> &dataTable, string fileName);
+void importer(string fileName);
 
 
 #endif  
