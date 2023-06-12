@@ -17,7 +17,11 @@ using std::unordered_map;
 using std::cout;
 using std::endl;
 
-void importer(string fileName);
+
+
+void importerData(string fileName);
+
+void importerCities(string FileName);
 
 
 #endif  

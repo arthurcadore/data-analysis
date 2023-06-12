@@ -12,11 +12,59 @@ This code collect the data from csv archive and store it in a hash table.
 #include "archiveReader.h"
 
 list<string> cities;
-list<string> atualLine;
 
-using namespace std;
+unordered_map<string, list<string>> dataDeathTable;
+unordered_map<string, list<string>> dataConfirmedTable;
+unordered_map<string, list<string>> dataPopulationConfirmed;
 
-void importer(string fileName){
+char separatorCharacter = ',';
+
+void separator(const string& input, char separator, list<string>& line) {
+    int space = 0;
+    string stringSeparator, aux;
+
+    stringSeparator += separator;
+
+    while (space != string::npos) {
+        int word = input.find_first_not_of(stringSeparator, space);
+
+        if (word == string::npos) break;
+
+        space = input.find(separator, word);
+        if (space == string::npos) {
+            aux = input.substr(word);
+        } else {
+            aux = input.substr(word, space - word);
+        }
+        line.push_back(aux);
+    }
+}
+
+void importerCities(string FileName){
+
+  // importa a lista de cidades de um arquivo .txt com as cidades separadas por quebra de linha.
+
+  // Abre arquivo txt
+  ifstream archiveTXT(FileName);
+
+  if (!archiveTXT.is_open()) {
+    // Caso haja erro ao abrir o arquivo, retorna exeção.
+    throw "Erro ao abrir o arquivo txt";
+  }
+
+  string line;
+  while (getline(archiveTXT, line)) {
+
+    // Verifica se a linha não está vazia.
+    if (!line.empty()) {
+
+      // recebe a primeira coluna da linha, que contém o nome da cidade.
+      cities.push_back(lineOutput.front());
+    }
+  }
+}
+
+void importerData(string fileName){
 
   // Abre arquivo CSV
   ifstream archiveCSV(fileName);
@@ -26,48 +74,64 @@ void importer(string fileName){
     throw "Erro ao abrir o arquivo csv";
   }
 
-  // // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
-  // string line;
-  // getline(csv, line);
-
-  // // imprime a linha para o usuário;
-  // cout << line << endl;
-
+  // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
   string line;
+  std::getline(archiveCSV, line);
+
  while (getline(archiveCSV, line)) {
 
     // Verifica se a linha não está vazia.
+    list<string> lineOutput;
     if (!line.empty()) {
 
-      // Cria um stringstream para ler a linha.
-      stringstream ss(line);
+     // Separa a linha em palavras, utilizando o separador ','.
+      separator(line, separatorCharacter, lineOutput);
 
-      while (ss.good()) {
-        string substr;
-        getline(ss, substr, ',');
-        atualLine.push_back(substr);
+      // verifica se a primeira coluna da linha não está vazia. 
+      if(lineOutput.back() != ""){
       }
 
-      // pega a primeira posição da lista atualine e imprime no terminal, verifica se a string é vazia.
-      if (!atualLine.front().empty()) {
-        // cout << atualLine.front() << endl;
-      string city = atualLine.front();
-      cities.push_back(city);
-      }
-      atualLine.clear();
     }
   }
 
-  cout << cities.size() << endl;
-  // Remove duplicatas na lista de cidades.
-    cities.sort();
-    cities.unique();
-  cout << cities.size() << endl;
-
-  // intera a lista de cidade imprimindo no terminal:
-  // for (auto& x: cities) {
-  //   cout << x << endl;
-  // }
 }
+
+
+void statesReader(string fileName){
+
+  // Abre arquivo CSV
+  ifstream archiveCSV(fileName);
+
+  if (!archiveCSV.is_open()) {
+    // Caso haja erro ao abrir o arquivo, retorna exeção.
+    throw "Erro ao abrir o arquivo csv";
+  }
+
+  // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
+  string line;
+  std::getline(archiveCSV, line);
+
+ while (getline(archiveCSV, line)) {
+
+    // Verifica se a linha não está vazia.
+     list<string> lineOutput;
+    if (!line.empty()) {
+
+      // Separa a linha em palavras, utilizando o separador ','.
+      separator(line, separatorCharacter, lineOutput);
+
+
+
+      
+      // verifica se a primeira coluna da linha não está vazia. 
+      if(lineOutput.back() != ""){
+        cout << lineOutput.back() << endl;
+      }
+    }
+  }
+
+}
+
+
 
 

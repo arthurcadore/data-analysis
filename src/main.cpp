@@ -11,13 +11,14 @@ This code is responsible for the user interface and the call of the other functi
 
 #include "main.h"
 
-string fileName = "caso_full.csv";
-unordered_map<string, string> dataTable;
+string dataSetArchive = "caso_full.csv";
+string citiesArchive = "cities.txt";
 
 int main(int argc, char const *argv[]) {
 
     // Cria a hash table que armazenará os dados.
     // Chama a função que importa os dados do arquivo csv para a hash table.
 
-    importer(fileName);
+    importerCities(citiesArchive);
+    importerData(dataSetArchive);
 }
