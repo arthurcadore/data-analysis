@@ -11,11 +11,7 @@ This code collect the data from csv archive and store it in a hash table.
 
 #include "archiveReader.h"
 
-list<string> cities;
-
-unordered_map<string, list<string>> dataDeathTable;
-unordered_map<string, list<string>> dataConfirmedTable;
-unordered_map<string, list<string>> dataPopulationConfirmed;
+list<string> states;
 
 char separatorCharacter = ',';
 
@@ -40,64 +36,42 @@ void separator(const string& input, char separator, list<string>& line) {
     }
 }
 
-void importerCities(string FileName){
+// void importerData(string fileName, string atualState){
 
-  // importa a lista de cidades de um arquivo .txt com as cidades separadas por quebra de linha.
+//   // Abre arquivo CSV
+//   ifstream archiveCSV(fileName);
 
-  // Abre arquivo txt
-  ifstream archiveTXT(FileName);
+//   if (!archiveCSV.is_open()) {
+//     // Caso haja erro ao abrir o arquivo, retorna exeção.
+//     throw "Erro ao abrir o arquivo csv";
+//   }
 
-  if (!archiveTXT.is_open()) {
-    // Caso haja erro ao abrir o arquivo, retorna exeção.
-    throw "Erro ao abrir o arquivo txt";
-  }
+//   // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
+//   string line;
+//   std::getline(archiveCSV, line);
 
-  string line;
-  while (getline(archiveTXT, line)) {
+//  while (getline(archiveCSV, line)) {
 
-    // Verifica se a linha não está vazia.
-    if (!line.empty()) {
+//     // Verifica se a linha não está vazia.
+//     list<string> lineOutput;
+//     if (!line.empty()) {
 
-      // recebe a primeira coluna da linha, que contém o nome da cidade.
-      cities.push_back(lineOutput.front());
-    }
-  }
-}
+//      // Separa a linha em palavras, utilizando o separador ','.
+//       separator(line, separatorCharacter, lineOutput);
 
-void importerData(string fileName){
+//       // verifica se a primeira coluna da linha não está vazia e se a ultima coluna é a coluna de estado. 
+//       if(lineOutput.front() != "" && lineOutput.back() == atualState){
 
-  // Abre arquivo CSV
-  ifstream archiveCSV(fileName);
+//         // importa os dados já triados para a função de processamento. 
+//         inputProcessing(COLUNACONFIRMADOS, COLUNAMORTOS, COLUNAPOPULACAO, lineOutput, atualState);
+//       }
+//     }
+//   }
 
-  if (!archiveCSV.is_open()) {
-    // Caso haja erro ao abrir o arquivo, retorna exeção.
-    throw "Erro ao abrir o arquivo csv";
-  }
-
-  // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
-  string line;
-  std::getline(archiveCSV, line);
-
- while (getline(archiveCSV, line)) {
-
-    // Verifica se a linha não está vazia.
-    list<string> lineOutput;
-    if (!line.empty()) {
-
-     // Separa a linha em palavras, utilizando o separador ','.
-      separator(line, separatorCharacter, lineOutput);
-
-      // verifica se a primeira coluna da linha não está vazia. 
-      if(lineOutput.back() != ""){
-      }
-
-    }
-  }
-
-}
+// }
 
 
-void statesReader(string fileName){
+void statesReader(string fileName, int stateColum){
 
   // Abre arquivo CSV
   ifstream archiveCSV(fileName);
@@ -120,16 +94,25 @@ void statesReader(string fileName){
       // Separa a linha em palavras, utilizando o separador ','.
       separator(line, separatorCharacter, lineOutput);
 
+        // retira as colunas não necessárias (N vezes) para acessar a coluna dos estados. 
+        for(int i = 0; i < stateColum; i++){
+        lineOutput.pop_back();
+        }
 
-
-      
-      // verifica se a primeira coluna da linha não está vazia. 
-      if(lineOutput.back() != ""){
-        cout << lineOutput.back() << endl;
-      }
+        // coleta ultima coluna da linha, que contém o nome do estado, e armazena em uma lista.
+        string state = lineOutput.back();
+        states.push_back(state);
     }
   }
 
+  // ordena os estados e retira os estados repetidos.
+  states.sort();
+  states.unique();
+
+  // imprime os estados (para debug);
+  for(auto i : states){
+    cout << i << endl;
+  }
 }
 
 

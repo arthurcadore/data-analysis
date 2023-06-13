@@ -16,9 +16,9 @@ string citiesArchive = "cities.txt";
 
 int main(int argc, char const *argv[]) {
 
-    // Cria a hash table que armazenará os dados.
-    // Chama a função que importa os dados do arquivo csv para a hash table.
+    // Faz a leitura inicial do dataset para procurar quais são os estados.
+    statesReader(dataSetArchive, COLUNAESTADOS);
 
-    importerCities(citiesArchive);
-    importerData(dataSetArchive);
+    // Faz a leitura do dataset linha a linha, utilizando como filtro o estado passado como argumento de linha de comando. 
+    // importerData(dataSetArchive, argv[1]);
 }

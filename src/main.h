@@ -9,6 +9,9 @@
 #include <sstream>
 
 #include "archiveReader.h"
+#include "processing.h"
+
+#define COLUNAESTADOS 2
 
 using std::cin;
 using std::cout;
