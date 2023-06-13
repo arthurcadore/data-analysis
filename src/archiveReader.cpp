@@ -36,39 +36,39 @@ void separator(const string& input, char separator, list<string>& line) {
     }
 }
 
-// void importerData(string fileName, string atualState){
+void importerData(string fileName, string atualState){
 
-//   // Abre arquivo CSV
-//   ifstream archiveCSV(fileName);
+  // Abre arquivo CSV
+  ifstream archiveCSV(fileName);
 
-//   if (!archiveCSV.is_open()) {
-//     // Caso haja erro ao abrir o arquivo, retorna exeção.
-//     throw "Erro ao abrir o arquivo csv";
-//   }
+  if (!archiveCSV.is_open()) {
+    // Caso haja erro ao abrir o arquivo, retorna exeção.
+    throw "Erro ao abrir o arquivo csv";
+  }
 
-//   // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
-//   string line;
-//   std::getline(archiveCSV, line);
+  // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
+  string line;
+  std::getline(archiveCSV, line);
 
-//  while (getline(archiveCSV, line)) {
+ while (getline(archiveCSV, line)) {
 
-//     // Verifica se a linha não está vazia.
-//     list<string> lineOutput;
-//     if (!line.empty()) {
+    // Verifica se a linha não está vazia.
+    list<string> lineOutput;
+    if (!line.empty()) {
 
-//      // Separa a linha em palavras, utilizando o separador ','.
-//       separator(line, separatorCharacter, lineOutput);
+     // Separa a linha em palavras, utilizando o separador ','.
+      separator(line, separatorCharacter, lineOutput);
 
-//       // verifica se a primeira coluna da linha não está vazia e se a ultima coluna é a coluna de estado. 
-//       if(lineOutput.front() != "" && lineOutput.back() == atualState){
+      // verifica se a primeira coluna da linha não está vazia e se a ultima coluna é a coluna de estado. 
+      if(lineOutput.front() != "" && lineOutput.back() == atualState){
 
-//         // importa os dados já triados para a função de processamento. 
-//         inputProcessing(COLUNACONFIRMADOS, COLUNAMORTOS, COLUNAPOPULACAO, lineOutput, atualState);
-//       }
-//     }
-//   }
+        // importa os dados já triados para a função de processamento. 
+        inputProcessing(COLUNACONFIRMADOS, COLUNAMORTOS, COLUNAPOPULACAO, lineOutput, atualState);
+      }
+    }
+  }
 
-// }
+}
 
 
 void statesReader(string fileName, int stateColum){
@@ -110,9 +110,9 @@ void statesReader(string fileName, int stateColum){
   states.unique();
 
   // imprime os estados (para debug);
-  for(auto i : states){
-    cout << i << endl;
-  }
+  // for(auto i : states){
+  //   cout << i << endl;
+  // }
 }
 
 

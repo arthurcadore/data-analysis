@@ -15,18 +15,8 @@ unordered_map<string, list<string>> dataDeathTable;
 unordered_map<string, list<string>> dataConfirmedTable;
 unordered_map<string, list<string>> dataPopulationConfirmed;
 
-void inputProcessing(int colum1, int colum2, int colum3, list<string> lineInput, list<string>states){
+void media(int colum1, int colum2, int colum3, list<string> lineInput, string state){}
 
-  
-}
+void desvioPadrao(int colum1, int colum2, int colum3, list<string> lineInput, string state){}
 
-void media(int colum1, int colum2, int colum3, list<string> lineInput, list<string>states){
-
-
-}
-
-void desvioPadrao(int colum1, int colum2, int colum3, list<string> lineInput, list<string>states){
-
-}
-
-
+void inputProcessing(int colum1, int colum2, int colum3, list<string> lineInput, string state){}

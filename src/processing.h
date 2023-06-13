@@ -24,6 +24,4 @@ void desvioPadrao(int colum1, int colum2, int colum3, list<string> lineInput, st
 
 void inputProcessing(int colum1, int colum2, int colum3, list<string> lineInput, string state);
 
-
-
 #endif  // PROCESSING_H
