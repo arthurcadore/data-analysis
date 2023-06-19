@@ -19,4 +19,9 @@ void media(int colum1, int colum2, int colum3, list<string> lineInput, string st
 
 void desvioPadrao(int colum1, int colum2, int colum3, list<string> lineInput, string state){}
 
-void inputProcessing(int colum1, int colum2, int colum3, list<string> lineInput, string state){}
+void inputProcessing(int deaths, int confirmed, int population, string date, string state){}
+
+// slide de correlação pra casos confirmados e mortes 
+// corelação de população e mortes 
+// área em (m2) de cada estado. 
+// densidade populacional com desvio padrão de cada estado. 

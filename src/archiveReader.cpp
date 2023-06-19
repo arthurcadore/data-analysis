@@ -15,104 +15,89 @@ list<string> states;
 
 char separatorCharacter = ',';
 
-void separator(const string& input, char separator, list<string>& line) {
-    int space = 0;
-    string stringSeparator, aux;
 
-    stringSeparator += separator;
+// função que recebe uma string como imput, o caracter separador e um vetor de strings para armazenar as palavras separadas. 
+void separator(string line, char separatorCharacter, string lineOutput[], int expectedSize, bool &sizeVerifier){
 
-    while (space != string::npos) {
-        int word = input.find_first_not_of(stringSeparator, space);
+  // Cria um fluxo de string para a linha.
+  stringstream ss(line);
 
-        if (word == string::npos) break;
+  // Cria uma variável para armazenar cada palavra da linha.
+  string word;
 
-        space = input.find(separator, word);
-        if (space == string::npos) {
-            aux = input.substr(word);
-        } else {
-            aux = input.substr(word, space - word);
-        }
-        line.push_back(aux);
-    }
+  // Cria um contador para armazenar a posição da palavra no vetor.
+  int i = 0;
+
+  // Separa a linha em palavras, utilizando o separador ','.
+  while (getline(ss, word, separatorCharacter)) {
+
+    // Armazena a palavra no vetor.
+    lineOutput[i] = word;
+
+    // Incrementa o contador.
+    i++;
+  }
+
+  // Verifica se o tamanho do vetor é o esperado.
+  if (i != expectedSize) {
+    // Caso não seja, retorna exeção.
+    sizeVerifier = false;
+    throw "Erro ao ler o arquivo csv";
+  }
 }
 
-void importerData(string fileName, string atualState){
+// função que recebe o nome do arquivo e o estado que se deseja filtrar.
+void statesReader(string fileName, string stateIndex){
 
   // Abre arquivo CSV
   ifstream archiveCSV(fileName);
 
   if (!archiveCSV.is_open()) {
     // Caso haja erro ao abrir o arquivo, retorna exeção.
-    throw "Erro ao abrir o arquivo csv";
+    throw "Erro ao abpush_back(state);rir o arquivo csv";
   }
 
   // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
   string line;
-  std::getline(archiveCSV, line);
+  getline(archiveCSV, line);
 
  while (getline(archiveCSV, line)) {
 
     // Verifica se a linha não está vazia.
-    list<string> lineOutput;
-    if (!line.empty()) {
-
-     // Separa a linha em palavras, utilizando o separador ','.
-      separator(line, separatorCharacter, lineOutput);
-
-      // verifica se a primeira coluna da linha não está vazia e se a ultima coluna é a coluna de estado. 
-      if(lineOutput.front() != "" && lineOutput.back() == atualState){
-
-        // importa os dados já triados para a função de processamento. 
-        inputProcessing(COLUNACONFIRMADOS, COLUNAMORTOS, COLUNAPOPULACAO, lineOutput, atualState);
-      }
-    }
-  }
-
-}
-
-
-void statesReader(string fileName, int stateColum){
-
-  // Abre arquivo CSV
-  ifstream archiveCSV(fileName);
-
-  if (!archiveCSV.is_open()) {
-    // Caso haja erro ao abrir o arquivo, retorna exeção.
-    throw "Erro ao abrir o arquivo csv";
-  }
-
-  // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
-  string line;
-  std::getline(archiveCSV, line);
-
- while (getline(archiveCSV, line)) {
-
-    // Verifica se a linha não está vazia.
-     list<string> lineOutput;
+     string vetOutput[18];
+     bool sizeVerifier = true;
+     int expectedSize = 18;
     if (!line.empty()) {
 
       // Separa a linha em palavras, utilizando o separador ','.
-      separator(line, separatorCharacter, lineOutput);
-
-        // retira as colunas não necessárias (N vezes) para acessar a coluna dos estados. 
-        for(int i = 0; i < stateColum; i++){
-        lineOutput.pop_back();
-        }
-
-        // coleta ultima coluna da linha, que contém o nome do estado, e armazena em uma lista.
-        string state = lineOutput.back();
+      separator(line, separatorCharacter, vetOutput, expectedSize, sizeVerifier);
+        if(sizeVerifier){
+        // coleta a coluna do vetor correspondente ao estado;
+        string state = vetOutput[INDEXESTADO];
         states.push_back(state);
+
+        if(vetOutput[INDEXESTADO] == stateIndex){
+
+          // coleta a coluna do vetor correspondente ao numero de mortos;
+          int deaths = stoi(vetOutput[NOVOSMORTOS]);
+
+          // coleta a coluna do vetor correspondente ao numero de casos confirmados;
+          int confirmed = stoi(vetOutput[NOVOSCONFIRMADOS]);
+
+          // coleta a coluna do vetor correspondente ao numero de casos confirmados;
+          int population = stoi(vetOutput[POPULACAOESTIMADA]);
+
+          string date = (vetOutput[COLUNADATA]);
+
+          inputProcessing(deaths, confirmed, population, date, stateIndex);
+
+      
+          cout << stateIndex + " " << deaths << " " << confirmed <<  " " << population << " " << date << endl;
+        }
+        }
+        
     }
   }
-
-  // ordena os estados e retira os estados repetidos.
-  states.sort();
-  states.unique();
-
-  // imprime os estados (para debug);
-  // for(auto i : states){
-  //   cout << i << endl;
-  // }
 }
 
 

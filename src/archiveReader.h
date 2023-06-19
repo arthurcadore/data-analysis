@@ -10,9 +10,11 @@
 
 #include "processing.h"
 
-#define COLUNAMORTOS 5
-#define COLUNACONFIRMADOS 7 
-#define COLUNAPOPULACAO 10
+#define NOVOSMORTOS 17
+#define NOVOSCONFIRMADOS 16
+#define POPULACAOESTIMADA 4
+#define INDEXESTADO 15
+#define COLUNADATA 2
 
 using std::getline;
 using std::ifstream;
@@ -24,6 +26,7 @@ using std::cout;
 using std::endl;
 
 void importerData(string fileName, string atualState);
-void statesReader(string fileName, int stateColum); 
+void statesReader(string fileName, string stateIndex); 
+void separator(string line, char separatorCharacter, string lineOutput[], int expectedSize, bool &sizeVerifier);
 
 #endif  

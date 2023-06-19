@@ -22,6 +22,6 @@ void media(int colum1, int colum2, int colum3, list<string> lineInput, string st
 
 void desvioPadrao(int colum1, int colum2, int colum3, list<string> lineInput, string state);
 
-void inputProcessing(int colum1, int colum2, int colum3, list<string> lineInput, string state);
+void inputProcessing(int deaths, int confirmed, int population, string date, string state);
 
 #endif  // PROCESSING_H

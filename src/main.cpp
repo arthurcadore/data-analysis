@@ -17,9 +17,8 @@ string atualState = "AC";
 
 int main(int argc, char const *argv[]) {
 
-    // Faz a leitura inicial do dataset para procurar quais são os estados.
-    statesReader(dataSetArchive, COLUNAESTADOS);
-
     // Faz a leitura do dataset linha a linha, utilizando como filtro o estado passado como argumento de linha de comando. 
-    importerData(dataSetArchive, atualState);
+    statesReader(dataSetArchive, atualState);
+
+
 }

@@ -11,7 +11,7 @@
 #include "archiveReader.h"
 #include "processing.h"
 
-#define COLUNAESTADOS 2
+#define COLUNAESTADOS 15
 
 using std::cin;
 using std::cout;
