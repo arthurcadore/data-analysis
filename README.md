@@ -1,38 +1,20 @@
-# data-analysis
-Codes to analise huge datasets in python
+# Author: Arhur Cadore M. Barcella
+# GitHub: arthurcadore
+## data-analysis
 
+Program to analise huge datasets in c++
 
-código utilizado na coleta das cidades: 
+After compile the code, run it with cmake changing state define variable, or compile it for use with shell script
 
-´´´ 
- while (getline(archiveCSV, line)) {
+With shell script, the program excecute multiple times, to generate results for all states. 
 
-    // Verifica se a linha não está vazia.
-    if (!line.empty()) {
+## to compile code: 
 
-      // Cria um stringstream para ler a linha.
-      stringstream ss(line);
+cmake CMakeList.txt
+make run
 
-      while (ss.good()) {
-        string substr;
-        getline(ss, substr, ',');
-        atualLine.push_back(substr);
-      }
+## to compile code (for scripting): 
+g++ src/main.cpp src/archiveReader.cpp -o binaryCode 
+sudo chmod +x runner.sh && chmod +x binaryCode
+./runner.sh
 
-      // pega a primeira posição da lista atualine e imprime no terminal, verifica se a string é vazia.
-      if (!atualLine.front().empty()) {
-        // cout << atualLine.front() << endl;
-      string city = atualLine.front();
-      cities.push_back(city);
-      }
-      atualLine.clear();
-    }
-  }
-
-  cout << cities.size() << endl;
-  // Remove duplicatas na lista de cidades.
-    cities.sort();
-    cities.unique();
-  cout << cities.size() << endl;
-
-  ´´´

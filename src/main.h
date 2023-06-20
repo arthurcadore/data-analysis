@@ -1,3 +1,14 @@
+/*
+Author: Arhur Cadore M. Barcella
+
+GitHub: arthurcadore
+
+This file contains the main code for the program.
+
+This code is responsible for the user interface and the call of the other functions.
+
+*/
+
 #ifndef MAIN_H
 #define MAIN_H
 
