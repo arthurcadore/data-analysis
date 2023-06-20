@@ -8,16 +8,8 @@
 
 // definições globais de input ao programa: 
 #define INPUT1 "caso_full.csv";
-#define INPUT2 "AC"
+#define INPUT2 "SP"
 #define INPUT3 false
-
-// definições das colunas de operação: 
-#define NOVOSMORTOS 17
-#define NOVOSCONFIRMADOS 16
-#define POPULACAOESTIMADA 5
-#define INDEXESTADO 15
-#define COLUNADATA 2
-
 
 #include "archiveReader.h"
 

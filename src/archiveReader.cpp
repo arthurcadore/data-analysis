@@ -161,14 +161,31 @@ void statesReader(string fileName, string stateIndex, bool printCSV){
         if(state == stateIndex){
 
           // coleta a coluna do vetor correspondente ao numero de mortos;
-          int deaths = stoi(vetOutput[NOVOSMORTOS]);
+           int deaths = 0;
+          try{
+            deaths = stoi(vetOutput[NOVOSMORTOS]);
+          }catch(std::exception& e){
+            // Dispara exceção para erros de valores na coluna dos novos mortos: 
+            cout << "Erro no valor de morte: " << vetOutput[NOVOSMORTOS] << endl;
+          }
+          // coleta a coluna do vetor correspondente ao numero de casos confirmados;
+          int confirmed = 0;
+          try{
+            confirmed = stoi(vetOutput[NOVOSCONFIRMADOS]);
+           }catch(std::exception& e){
+            // Dispara exceção para erros de valores na coluna dos confirmados: 
+            cout << "Erro no valor de confirmados: " << vetOutput[NOVOSCONFIRMADOS] << endl;
+           }
 
           // coleta a coluna do vetor correspondente ao numero de casos confirmados;
-          int confirmed = stoi(vetOutput[NOVOSCONFIRMADOS]);
+            int population = 0;
+          try{
+            population = stoi(vetOutput[POPULACAOESTIMADA]);
+           }catch(std::exception& e){
 
-          // coleta a coluna do vetor correspondente ao numero de casos confirmados;
-          int population = stoi(vetOutput[POPULACAOESTIMADA]);
-
+            // Dispara exceção para erros de valores na coluna da população estimada: 
+           //  cout << "Erro no vlaor de população estimada: " << vetOutput[POPULACAOESTIMADA] << endl;
+           }
           // colea a coluna do vetor correspondente a data;
           string date = (vetOutput[COLUNADATA]);
 

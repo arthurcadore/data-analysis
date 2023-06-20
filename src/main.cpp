@@ -11,9 +11,6 @@ This code is responsible for the user interface and the call of the other functi
 
 #include "main.h"
 
-#define INPUT1 "caso_full.csv";
-#define INPUT2 "AC"
-#define INPUT3 false
 
 int main(int argc, char const *argv[]) {
 

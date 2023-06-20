@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 
+// definições das colunas de operação: 
 #define NOVOSMORTOS 17
 #define NOVOSCONFIRMADOS 16
 #define POPULACAOESTIMADA 5
