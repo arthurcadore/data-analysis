@@ -2,13 +2,9 @@
 #define ARCHIVEREADER_H
 
 #include <fstream>
-#include <list>
 #include <sstream>
-#include <unordered_map>
 #include <string>
 #include <iostream>
-
-#include "processing.h"
 
 #define NOVOSMORTOS 17
 #define NOVOSCONFIRMADOS 16
@@ -18,15 +14,13 @@
 
 using std::getline;
 using std::ifstream;
-using std::list;
 using std::string;
 using std::stringstream;
-using std::unordered_map;
 using std::cout;
 using std::endl;
 
 void importerData(string fileName, string atualState);
-void statesReader(string fileName, string stateIndex); 
+void statesReader(string fileName, string stateIndex, bool printCSV); 
 void separator(string line, char separatorCharacter, string lineOutput[], int expectedSize, bool &sizeVerifier);
 
 #endif  

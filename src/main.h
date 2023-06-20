@@ -3,22 +3,28 @@
 
 #include <fstream>
 #include <iostream>
-#include <list>
-#include <unordered_map>
 #include <string>
 #include <sstream>
 
-#include "archiveReader.h"
-#include "processing.h"
+// definições globais de input ao programa: 
+#define INPUT1 "caso_full.csv";
+#define INPUT2 "AC"
+#define INPUT3 false
 
-#define COLUNAESTADOS 15
+// definições das colunas de operação: 
+#define NOVOSMORTOS 17
+#define NOVOSCONFIRMADOS 16
+#define POPULACAOESTIMADA 5
+#define INDEXESTADO 15
+#define COLUNADATA 2
+
+
+#include "archiveReader.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
 using std::getline;
-using std::list;
 using std::string;
-using std::unordered_map;
 
 #endif  // MAIN_H

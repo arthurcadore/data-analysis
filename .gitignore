@@ -5,6 +5,7 @@ boletim.csv
 caso_full.csv
 obito_cartorio.csv
 dataAnalysis
+debug.txt
 *.csv
 
 ### C++ ###

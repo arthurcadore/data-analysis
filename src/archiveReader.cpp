@@ -10,9 +10,6 @@ This code collect the data from csv archive and store it in a hash table.
 */
 
 #include "archiveReader.h"
-#include "processing.h"
-
-list<string> states;
 
 int totaldeaths = 0;
 int totalconfirmed = 0;
@@ -33,7 +30,7 @@ void dateSub(string date, string &year, string &month, string &day) {
 
 // função que faz o calculo da média e desvio padrão; 
 // a média e desvio padrão são calculadas se o valor do mês e do ano forem iguais;
-void Processing(int deaths, int confirmed, int population, string date, string state){
+void Processing(int deaths, int confirmed, int population, string date, string state, bool print){
 
   string year, month, day;
   dateSub(date, year, month, day);
@@ -55,18 +52,32 @@ void Processing(int deaths, int confirmed, int population, string date, string s
       if(mediaCounter != 0){
         populationMedia = populationTotal/mediaCounter;
       }
-      cout << " " << endl << endl;
-      cout << "Data Atual: " << atualMonth << "/" << atualYear << endl;
-      cout << "Total de mortes: " << totaldeaths << endl;
-      cout << "Total de confirmados: " << totalconfirmed << endl;
-      cout << "Média da populaçao: " << populationMedia << endl;
 
-      if(populationMedia != 0){
-      cout << "Média de mortes por 100k (população): " << ((totaldeaths*100000)/populationMedia) << endl;
-      cout << "Média de casos confirmados por 100k (população): " << ((totalconfirmed*100000)/populationMedia) << endl;
+      if(print){
+
+        cout << atualMonth << "/" << atualYear << "," << totaldeaths << "," << totalconfirmed << "," << populationMedia << ",";
+        
+        if(populationMedia != 0){
+        cout << ((totaldeaths*100000)/populationMedia) << "," << ((totalconfirmed*100000)/populationMedia) << endl;
+        }else{
+          cout << endl;
+        }
+
+      }else{
+
+        cout << endl << endl;
+        cout << "Data Atual: " << atualMonth << "/" << atualYear << endl;
+        cout << "Total de mortes: " << totaldeaths << endl;
+        cout << "Total de confirmados: " << totalconfirmed << endl;
+        cout << "Média da populaçao: " << populationMedia << endl;
+
+        if(populationMedia != 0){
+           cout << "Média de mortes por 100k (população): " << ((totaldeaths*100000)/populationMedia) << endl;
+           cout << "Média de casos confirmados por 100k (população): " << ((totalconfirmed*100000)/populationMedia) << endl;
+        }
       }
+
       atualMonth++;
-   
       if (atualMonth > 12){
         atualMonth = 1;
         atualYear++;
@@ -109,7 +120,7 @@ void separator(string line, char separatorCharacter, string lineOutput[], int ex
 }
 
 // função que recebe o nome do arquivo e o estado que se deseja filtrar.
-void statesReader(string fileName, string stateIndex){
+void statesReader(string fileName, string stateIndex, bool printCSV){
 
   // Abre arquivo CSV
   ifstream archiveCSV(fileName);
@@ -118,6 +129,15 @@ void statesReader(string fileName, string stateIndex){
     // Caso haja erro ao abrir o arquivo, retorna exeção.
     throw "Erro ao abpush_back(state);rir o arquivo csv";
   }
+
+  if(printCSV){
+
+    cout << "Aluno: Arthur Cadore M. Barcella - " << " Tabela do estado: " << stateIndex << endl; 
+
+    // faz o print do cabeçalho da tabela referente ao estado "state": 
+    cout << "Date" << "," << "TotalDeaths" << "," << "TotalConfirmed" << "," << "PopulationMedia" << "," << "Media M. P/100k" << "," << "Media C. P/100k" << endl; 
+  }
+
 
   // Retira a primeira linha do arquivo, que contém apenas os nomes das colunas.
   string line;
@@ -134,13 +154,11 @@ void statesReader(string fileName, string stateIndex){
       // Separa a linha em palavras, utilizando o separador ','.
       separator(line, separatorCharacter, vetOutput, expectedSize, sizeVerifier);
         if(sizeVerifier){
+
         // coleta a coluna do vetor correspondente ao estado;
         string state = vetOutput[INDEXESTADO];
-        states.push_back(state);
 
-        if(vetOutput[INDEXESTADO] == stateIndex){
-
-          // cout<< "Estado: " << vetOutput[INDEXESTADO] << vetOutput[POPULACAOESTIMADA]<< endl;
+        if(state == stateIndex){
 
           // coleta a coluna do vetor correspondente ao numero de mortos;
           int deaths = stoi(vetOutput[NOVOSMORTOS]);
@@ -154,12 +172,10 @@ void statesReader(string fileName, string stateIndex){
           // colea a coluna do vetor correspondente a data;
           string date = (vetOutput[COLUNADATA]);
 
-          Processing(deaths, confirmed, population, date, stateIndex);
-
-          // cout << stateIndex + " " << deaths << " " << confirmed <<  " " << population << " " << date << endl;
+          Processing(deaths, confirmed, population, date, stateIndex, printCSV);
+         
         }
-        }
-        
+      }
     }
   }
 }

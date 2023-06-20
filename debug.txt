@@ -1,20 +1,20 @@
 Consolidate compiler generated dependencies of target dataAnalysis
-[ 33%] Building CXX object CMakeFiles/dataAnalysis.dir/src/archiveReader.cpp.o
+[ 33%] Building CXX object CMakeFiles/dataAnalysis.dir/src/main.cpp.o
 [ 66%] Linking CXX executable dataAnalysis
 [100%] Built target dataAnalysis
- 
+
 
 Data Atual: 1/2020
 Total de mortes: 0
 Total de confirmados: 0
 Média da populaçao: 0
- 
+
 
 Data Atual: 2/2020
 Total de mortes: 0
 Total de confirmados: 0
 Média da populaçao: 0
- 
+
 
 Data Atual: 3/2020
 Total de mortes: 0
@@ -22,7 +22,7 @@ Total de confirmados: 84
 Média da populaçao: 644627
 Média de mortes por 100k (população): 0
 Média de casos confirmados por 100k (população): 13
- 
+
 
 Data Atual: 4/2020
 Total de mortes: 38
@@ -30,7 +30,7 @@ Total de confirmados: 724
 Média da populaçao: 644627
 Média de mortes por 100k (população): 5
 Média de casos confirmados por 100k (população): 112
- 
+
 
 Data Atual: 5/2020
 Total de mortes: 258
@@ -38,7 +38,7 @@ Total de confirmados: 11630
 Média da populaçao: 644627
 Média de mortes por 100k (população): 40
 Média de casos confirmados por 100k (população): 1804
- 
+
 
 Data Atual: 6/2020
 Total de mortes: 434
@@ -46,7 +46,7 @@ Total de confirmados: 14068
 Média da populaçao: 644627
 Média de mortes por 100k (população): 67
 Média de casos confirmados por 100k (população): 2182
- 
+
 
 Data Atual: 7/2020
 Total de mortes: 332
@@ -54,7 +54,7 @@ Total de confirmados: 12744
 Média da populaçao: 644627
 Média de mortes por 100k (população): 51
 Média de casos confirmados por 100k (população): 1976
- 
+
 
 Data Atual: 8/2020
 Total de mortes: 162
@@ -62,7 +62,7 @@ Total de confirmados: 10044
 Média da populaçao: 644627
 Média de mortes por 100k (população): 25
 Média de casos confirmados por 100k (população): 1558
- 
+
 
 Data Atual: 9/2020
 Total de mortes: 94
@@ -70,7 +70,7 @@ Total de confirmados: 7150
 Média da populaçao: 644627
 Média de mortes por 100k (população): 14
 Média de casos confirmados por 100k (população): 1109
- 
+
 
 Data Atual: 10/2020
 Total de mortes: 68
@@ -78,7 +78,7 @@ Total de confirmados: 5148
 Média da populaçao: 644627
 Média de mortes por 100k (população): 10
 Média de casos confirmados por 100k (população): 798
- 
+
 
 Data Atual: 11/2020
 Total de mortes: 60
@@ -86,7 +86,7 @@ Total de confirmados: 10926
 Média da populaçao: 644627
 Média de mortes por 100k (população): 9
 Média de casos confirmados por 100k (população): 1694
- 
+
 
 Data Atual: 12/2020
 Total de mortes: 144
@@ -94,7 +94,7 @@ Total de confirmados: 10722
 Média da populaçao: 644627
 Média de mortes por 100k (população): 22
 Média de casos confirmados por 100k (população): 1663
- 
+
 
 Data Atual: 1/2021
 Total de mortes: 144
@@ -102,7 +102,7 @@ Total de confirmados: 13694
 Média da populaçao: 644627
 Média de mortes por 100k (população): 22
 Média de casos confirmados por 100k (população): 2124
- 
+
 
 Data Atual: 2/2021
 Total de mortes: 262
@@ -110,7 +110,7 @@ Total de confirmados: 18134
 Média da populaçao: 644627
 Média de mortes por 100k (população): 40
 Média de casos confirmados por 100k (população): 2813
- 
+
 
 Data Atual: 3/2021
 Total de mortes: 528
@@ -118,7 +118,7 @@ Total de confirmados: 24246
 Média da populaçao: 644627
 Média de mortes por 100k (população): 81
 Média de casos confirmados por 100k (população): -2901
- 
+
 
 Data Atual: 4/2021
 Total de mortes: 534
@@ -126,7 +126,7 @@ Total de confirmados: 16292
 Média da populaçao: 644627
 Média de mortes por 100k (população): 82
 Média de casos confirmados por 100k (população): 2527
- 
+
 
 Data Atual: 5/2021
 Total de mortes: 266
@@ -134,7 +134,7 @@ Total de confirmados: 9442
 Média da populaçao: 644627
 Média de mortes por 100k (população): 41
 Média de casos confirmados por 100k (população): 1464
- 
+
 
 Data Atual: 6/2021
 Total de mortes: 152
@@ -142,7 +142,7 @@ Total de confirmados: 6064
 Média da populaçao: 644627
 Média de mortes por 100k (população): 23
 Média de casos confirmados por 100k (população): 940
- 
+
 
 Data Atual: 7/2021
 Total de mortes: 122
@@ -150,7 +150,7 @@ Total de confirmados: 3170
 Média da populaçao: 644627
 Média de mortes por 100k (população): 18
 Média de casos confirmados por 100k (população): 491
- 
+
 
 Data Atual: 8/2021
 Total de mortes: 30
@@ -158,7 +158,7 @@ Total de confirmados: 1364
 Média da populaçao: 644627
 Média de mortes por 100k (população): 4
 Média de casos confirmados por 100k (população): 211
- 
+
 
 Data Atual: 9/2021
 Total de mortes: 48
@@ -166,7 +166,7 @@ Total de confirmados: 202
 Média da populaçao: 644627
 Média de mortes por 100k (população): 7
 Média de casos confirmados por 100k (população): 31
- 
+
 
 Data Atual: 10/2021
 Total de mortes: 14
@@ -174,7 +174,7 @@ Total de confirmados: 252
 Média da populaçao: 644627
 Média de mortes por 100k (população): 2
 Média de casos confirmados por 100k (população): 39
- 
+
 
 Data Atual: 11/2021
 Total de mortes: 3
@@ -182,7 +182,7 @@ Total de confirmados: 173
 Média da populaçao: 644627
 Média de mortes por 100k (população): 0
 Média de casos confirmados por 100k (população): 26
- 
+
 
 Data Atual: 12/2021
 Total de mortes: 3
@@ -190,7 +190,7 @@ Total de confirmados: 171
 Média da populaçao: 644627
 Média de mortes por 100k (população): 0
 Média de casos confirmados por 100k (população): 26
- 
+
 
 Data Atual: 1/2022
 Total de mortes: 20
@@ -198,7 +198,7 @@ Total de confirmados: 12876
 Média da populaçao: 644627
 Média de mortes por 100k (população): 3
 Média de casos confirmados por 100k (população): 1997
- 
+
 
 Data Atual: 2/2022
 Total de mortes: 101
