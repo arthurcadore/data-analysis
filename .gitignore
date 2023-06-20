@@ -6,7 +6,7 @@ caso_full.csv
 obito_cartorio.csv
 dataAnalysis
 debug.txt
-*.csv
+.csv
 
 ### C++ ###
 # Prerequisites
