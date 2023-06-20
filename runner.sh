@@ -31,3 +31,33 @@
 ./a.out caso_full.csv SE > ./binaryCode/SE.csv
 ./a.out caso_full.csv SP > ./binaryCode/SP.csv
 ./a.out caso_full.csv TO > ./binaryCode/TO.csv
+
+# para todos os estados, gera um arquivo único de output
+echo "Aquivo único de resultados (COVID 19) - Autor: Arthur Cadore M. B." > ./out/finalResults.csv
+./binaryCode caso_full.csv AC >> ./out/finalResults.csv
+./binaryCode caso_full.csv AL >> ./out/finalResults.csv
+./binaryCode caso_full.csv AM >> ./out/finalResults.csv
+./binaryCode caso_full.csv AP >> ./out/finalResults.csv
+./binaryCode caso_full.csv BA >> ./out/finalResults.csv
+./binaryCode caso_full.csv CE >> ./out/finalResults.csv
+./binaryCode caso_full.csv DF >> ./out/finalResults.csv
+./binaryCode caso_full.csv ES >> ./out/finalResults.csv
+./binaryCode caso_full.csv GO >> ./out/finalResults.csv
+./binaryCode caso_full.csv MA >> ./out/finalResults.csv
+./binaryCode caso_full.csv MG >> ./out/finalResults.csv
+./binaryCode caso_full.csv MS >> ./out/finalResults.csv
+./binaryCode caso_full.csv MT >> ./out/finalResults.csv
+./binaryCode caso_full.csv PA >> ./out/finalResults.csv
+./binaryCode caso_full.csv PB >> ./out/finalResults.csv
+./binaryCode caso_full.csv PE >> ./out/finalResults.csv
+./binaryCode caso_full.csv PI >> ./out/finalResults.csv
+./binaryCode caso_full.csv PR >> ./out/finalResults.csv
+./binaryCode caso_full.csv RJ >> ./out/finalResults.csv
+./binaryCode caso_full.csv RN >> ./out/finalResults.csv
+./binaryCode caso_full.csv RO >> ./out/finalResults.csv
+./binaryCode caso_full.csv RR >> ./out/finalResults.csv
+./binaryCode caso_full.csv RS >> ./out/finalResults.csv
+./binaryCode caso_full.csv SC >> ./out/finalResults.csv
+./binaryCode caso_full.csv SE >> ./out/finalResults.csv
+./binaryCode caso_full.csv SP >> ./out/finalResults.csv
+./binaryCode caso_full.csv TO >> ./out/finalResults.csv
