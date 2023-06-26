@@ -11,6 +11,7 @@ This code collect the data from csv archive and store it in a hash table.
 
 #include "archiveReader.h"
 
+// definições das variáveis de processamento:
 int totaldeaths = 0;
 int totalconfirmed = 0;
 int atualMonth = 1;
@@ -22,6 +23,7 @@ int mediaCounter = 0;
 
 char separatorCharacter = ',';
 
+// função para separar a string completa (formato YYYY-DD-MM) para strings individuais: 
 void dateSub(string date, string &year, string &month, string &day) {
   year = date.substr(0, 4);
   month = date.substr(5, 2);
@@ -32,12 +34,20 @@ void dateSub(string date, string &year, string &month, string &day) {
 // a média e desvio padrão são calculadas se o valor do mês e do ano forem iguais;
 void Processing(int deaths, int confirmed, int population, string date, string state, bool print){
 
+  // definição de strings utilizadas na função de separação: 
   string year, month, day;
   dateSub(date, year, month, day);
+
+  // traduz as strings de ano e mês para inteiro
+  // valor de dia não é utilizado pois a análise dos datasets é feita mês a mês não por dia. 
   int yearInt = stoi(year);
   int monthInt = stoi(month);
 
+  
   while(true){
+
+    // verifica se o mês e ano da linha atual é igual ao da linha anterior; 
+    // caso sejam, realiza operações de acordo com a coluna do dataset. 
     if (atualMonth == monthInt && atualYear == yearInt){
       totaldeaths += deaths;
       totalconfirmed += confirmed;
@@ -48,11 +58,13 @@ void Processing(int deaths, int confirmed, int population, string date, string s
       }
       break;
     }
+    // caso sejam diferentes, faz a impressão dos resultados da medição e avança para uma nova data; 
     else{
       if(mediaCounter != 0){
         populationMedia = populationTotal/mediaCounter;
       }
 
+      // verifica se a variavel de impressão (CSV) está ativa ou não, caso esteja imprime em formato CSV, caso não, em formato de texto simples.
       if(print){
 
         cout << atualMonth << "/" << atualYear << "," << totaldeaths << "," << totalconfirmed << "," << populationMedia << ",";
@@ -77,11 +89,13 @@ void Processing(int deaths, int confirmed, int population, string date, string s
         }
       }
 
+      //incrementa o valor mensal e anual, varrendo todas as posições do dataset. 
       atualMonth++;
       if (atualMonth > 12){
         atualMonth = 1;
         atualYear++;
       }
+      // zera os valores de população, morte, e média, para que possa se iniciar uma nova leitura. 
       totaldeaths = 0;
       totalconfirmed = 0;
       populationMedia = 0;
@@ -182,13 +196,11 @@ void statesReader(string fileName, string stateIndex, bool printCSV){
           try{
             population = stoi(vetOutput[POPULACAOESTIMADA]);
            }catch(std::exception& e){
-
-            // Dispara exceção para erros de valores na coluna da população estimada: 
-           //  cout << "Erro no vlaor de população estimada: " << vetOutput[POPULACAOESTIMADA] << endl;
            }
-          // colea a coluna do vetor correspondente a data;
+          // coleta a coluna do vetor correspondente a data;
           string date = (vetOutput[COLUNADATA]);
 
+          // chama a função de processamento para a linha coletada; 
           Processing(deaths, confirmed, population, date, stateIndex, printCSV);
          
         }
