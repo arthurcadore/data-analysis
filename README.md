@@ -1,6 +1,4 @@
-# Author: Arhur Cadore M. Barcella
-# GitHub: arthurcadore
-## data-analysis
+# Data Analysis code to Huge CSV Datasets
 
 Program to analise huge datasets in c++
 
